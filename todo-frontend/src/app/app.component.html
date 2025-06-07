@@ -1,0 +1,20 @@
+<div class="container">
+
+  <div class="d-flex justify-content-between mt-5 align-items-center">
+    <div>
+      <h1> To-Do List</h1>
+
+    </div>
+    <div>
+      <a class="error" *ngIf="currentRoute === '/new'" routerLink="/">Back To List</a>
+
+      <a class="success" *ngIf="currentRoute === '/'" routerLink="/new">Add New</a>
+    </div>
+
+
+  </div>
+  <div class="mt-5">
+    <router-outlet></router-outlet>
+    <app-toast></app-toast> <!-- toast buraya -->
+  </div>
+</div>

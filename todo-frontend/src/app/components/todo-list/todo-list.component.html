@@ -1,0 +1,45 @@
+<div class="controls">
+  <input [(ngModel)]="search" placeholder="Search by title..." />
+
+  <div class="sort-toggle">
+    <label>Sort by Due Date:</label>
+    <button class="sort-button" (click)="toggleSort()">
+      {{ sortDirection === "asc" ? "↑ Ascending" : "↓ Descending" }}
+    </button>
+  </div>
+
+  <select [(ngModel)]="filter">
+    <option value="all">All</option>
+    <option value="completed">Completed</option>
+    <option value="open">Open</option>
+  </select>
+</div>
+
+<div class="row">
+  <div class="col-md-6" *ngFor="let todo of filteredTodos">
+    <div class="todo-item" (click)="toggleDetails(todo.id!)">
+      <input
+        type="checkbox"
+        [(ngModel)]="todo.completed"
+        (ngModelChange)="toggleComplete(todo)"
+        (click)="$event.stopPropagation()"
+      />
+
+      <div class="content">
+        <strong>{{ todo.title }}</strong>
+
+        <div class="details" *ngIf="showDetailsMap[todo.id!]">
+          <small *ngIf="todo.description">{{ todo.description }}</small
+          ><br *ngIf="todo.description" />
+          <small *ngIf="todo.due_date"
+            >Due: {{ todo.due_date | date : "short" }}</small
+          >
+        </div>
+      </div>
+
+      <button (click)="deleteTodo(todo.id!); $event.stopPropagation()">
+        Delete
+      </button>
+    </div>
+  </div>
+</div>

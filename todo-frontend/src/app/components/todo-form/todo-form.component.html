@@ -1,0 +1,11 @@
+<div>
+
+  <form [formGroup]="todoForm" (ngSubmit)="onSubmit()" class="form">
+    <input formControlName="title" placeholder="Title" required />
+    <textarea formControlName="description" placeholder="Description"></textarea>
+    <input type="datetime-local" formControlName="due_date" />
+    <button type="submit" [disabled]="todoForm.invalid">Add To-Do</button>
+  </form>
+
+
+</div>

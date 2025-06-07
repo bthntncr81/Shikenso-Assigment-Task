@@ -1,0 +1,281 @@
+/* You can add global styles to this file, and also import other style files */
+
+a {
+  text-decoration: none;
+}
+.form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; // tüm elemanlar tam genişlik
+  gap: 16px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #fdfdfd;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+
+  input,
+  textarea,
+  button {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 15px;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: all 0.2s ease;
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: #5c8df6;
+    box-shadow: 0 0 0 2px rgba(92, 141, 246, 0.2);
+    outline: none;
+  }
+
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  button {
+    background-color: #5c8df6;
+    color: white;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+
+    &:disabled {
+      background-color: #aaa;
+      cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: #3f6be0;
+    }
+  }
+}
+
+.controls {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  input,
+  select {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 250px;
+    box-sizing: border-box;
+
+    &:focus {
+      border-color: #5c8df6;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(92, 141, 246, 0.2);
+    }
+  }
+}
+
+nav {
+  background-color: #5c8df6;
+  padding: 8px 0px;
+  border-radius: 8px;
+  margin: 20px auto;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    &.active {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+  }
+}
+
+a {
+  text-decoration: none !important;
+  color: white !important;
+  padding: 0.7rem;
+  border-radius: 6px;
+  height: 35px !important;
+
+  &.error {
+    background-color: red;
+  }
+
+  &.success {
+    background-color: rgb(78, 177, 92);
+  }
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 16px;
+  background-color: #fefefe;
+  padding: 14px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.04);
+  cursor: pointer;
+  transition: all 0.4s ease;
+
+  &:hover {
+    background-color: rgb(239, 228, 206);
+  }
+
+  input[type="checkbox"] {
+    appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #5c8df6;
+    border-radius: 4px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s;
+
+    &:checked {
+      background-color: #5c8df6;
+      border-color: #5c8df6;
+
+      &::after {
+        content: "✔";
+        color: white;
+        font-size: 16px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -60%);
+      }
+    }
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    strong {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .details {
+      color: #666;
+      font-size: 13px;
+    }
+
+    small {
+      font-size: 13px;
+      color: #666;
+    }
+  }
+
+  button {
+    align-self: center;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #c0392b;
+    }
+  }
+}
+
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+  animation: slide-down 0.5s ease;
+
+  &.success {
+    background-color: #4caf50;
+  }
+
+  &.error {
+    background-color: #e53935;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0%);
+    opacity: 1;
+  }
+}
+.toast:not(.show) {
+  display: block !important;
+}
+
+.sort-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .sort-button {
+    padding: 6px 14px;
+    background-color: #5c8df6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #3f6be0;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
