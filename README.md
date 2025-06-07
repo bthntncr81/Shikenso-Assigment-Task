@@ -1,4 +1,4 @@
-# Backend – FastAPI To-Do API
+# TO-DO APP
 
 This directory contains the backend for the To-Do List Management System. It is built with FastAPI and SQLAlchemy, using SQLite for data storage. The backend exposes a RESTful API to be consumed by the Angular frontend.
 
