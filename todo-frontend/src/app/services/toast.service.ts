@@ -11,6 +11,6 @@ export class ToastService {
 
   show(type: 'success' | 'error', text: string) {
     this._message$.next({ type, text });
-    setTimeout(() => this._message$.next(null), 3000); // otomatik kaybolur
+    setTimeout(() => this._message$.next(null), 3000);
   }
 }
